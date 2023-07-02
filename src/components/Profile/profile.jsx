@@ -1,31 +1,32 @@
 import PropTypes from 'prop-types';
+import css from './Profile.module.css';
 export const Profile = ({ username, tag, location, avatar, stats }) => (
-  <div className="profile">
-    <div className="description">
+  <div className={css.profile}>
+    <div className={css.description}>
       <img src={avatar} alt="User avatar" className="avatar" />
-      <p className="name">{username}</p>
-      <p className="tag">@{tag}</p>
-      <p className="location">{location}</p>
+      <p className={css.name}>{username}</p>
+      <p className={css.tag}>@{tag}</p>
+      <p className={css.location}>{location}</p>
     </div>
 
-    <ul className="stats">
+    <ul className={css.stats}>
       {Object.entries(stats).map(([key, value]) => (
         <li key={key}>
-          <span>{key}</span>
-          <span>{value}</span>
+          <span className={css.stat}>{key}</span>
+          <span className={css.value}>{value}</span>
         </li>
       ))}
     </ul>
   </div>
 );
 Profile.propTypes = {
-  username: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  avatar: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   stats: PropTypes.shape({
-    followers: PropTypes.number,
-    views: PropTypes.number,
-    likes: PropTypes.number,
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
   }),
 };
